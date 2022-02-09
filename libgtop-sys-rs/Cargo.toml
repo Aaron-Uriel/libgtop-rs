@@ -1,8 +1,34 @@
 [package]
-name = "libgtop-sys-rs"
-version = "0.1.0"
+name = "gtop-sys"
+version = "0.0.1"
 edition = "2021"
+build = "build.rs"
+[package.metadata.system-deps.libgtop_2_0]
+name = "libgtop-2.0"
+version = "2"
+[package.metadata.docs.rs]
+features = ["dox"]
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+name = "gtop_sys"
 
 [dependencies]
+libc = "0.2"
+
+[dependencies.glib]
+package = "glib-sys"
+git = "https://github.com/gtk-rs/gtk-rs-core"
+version = "0.16"
+
+[dependencies.gobject-sys]
+git = "https://github.com/gtk-rs/gtk-rs-core"
+
+[build-dependencies]
+system-deps = "6"
+
+[dev-dependencies]
+shell-words = "1.0.0"
+tempfile = "3"
+
+[features]
+dox = []
