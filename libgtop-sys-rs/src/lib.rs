@@ -378,10 +378,11 @@ pub const TABLE_SIZE: c_int = 101;
 pub const TRUE: c_int = 1;
 
 // Unions
+#[derive(Copy, Clone)]
 #[repr(C)]
 pub union glibtop_open_files_entry_info {
     pub sock: glibtop_open_files_entry_info_sock,
-    _truncated_record_marker: c_void,
+    _truncated_record_marker: glibtop_open_files_entry_info_localsock,
     // /*Metadata mismatch*/[c:type mismatch `glibtop_open_files_entry_info_file` != `glibtop_open_files_entry_info_localsock` of `glibtop_open_files_entry_info_localsock`]
 }
 
